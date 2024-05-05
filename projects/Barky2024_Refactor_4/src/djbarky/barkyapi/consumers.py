@@ -22,7 +22,8 @@ class BookmarkConsumer(AsyncHttpConsumer):
         bookmarks = Bookmark.objects.all()
         # Serialize the bookmarks
         data = json.dumps(
-            [{"title": bookmark.title, "url": bookmark.url} for bookmark in bookmarks]
+            [{"title": bookmark.title, "url": bookmark.url}
+                for bookmark in bookmarks]
         )
         # Send the serialized data as a JSON response
         await self.send_response(
@@ -51,5 +52,5 @@ class BookmarkConsumer(AsyncHttpConsumer):
             "bookmarks-add", {"type": "send.bookmark", "data": data}
         )
         # await self.send_response(
-        #     200, data, headers=[(b"Content-Type", b"application/json")]
+        #     300, data, headers=[(b"Content-Type", b"application/json")]
         # )
